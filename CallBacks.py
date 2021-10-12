@@ -18,11 +18,12 @@ def Check_Point():
     Check_Point_Path = f'model_checkPoints/{CheckPoint_name}.ckpt'
     model_checkPoints = tf.keras.callbacks.ModelCheckpoint(Check_Point_Path,montior = 'val_acc',save_best_only = True,save_weights_only=True,verbose=0)
     print(model_checkPoints)
+    return model_checkPoints
 
 def Early_Stop():
     early_Stop = tf.keras.callbacks.EarlyStopping(monitor='val_loss',patience =3)
     return early_Stop
 
 def Reduce_lr():
-  Reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss',factor=0.2,patience=2,verbose=1,min_lr=1e-7)
-  return Reduce_lr
+  reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss',factor=0.2,patience=2,verbose=1,min_lr=1e-7)
+  return reduce_lr
